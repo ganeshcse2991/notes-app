@@ -1,4 +1,4 @@
-const { createUser, getUser, deleteUser, updateUser } = require("../controllers/Users");
+const { createUser, getUser, deleteUser, updateUser, findAllUsers } = require("../controllers/Users");
 
 module.exports = [{
     method: 'POST',
@@ -16,5 +16,12 @@ module.exports = [{
     method: 'PUT',
     path: '/api/user/{id}',
     handler: updateUser
-}
+},
+
+{
+    method: 'GET',
+    path: '/api/user/all',
+    handler: findAllUsers
+},
+
 ]

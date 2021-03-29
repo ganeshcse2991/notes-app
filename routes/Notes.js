@@ -1,4 +1,4 @@
-const { createNote, deleteNote, getNote, updateNote } = require("../controllers/Notes");
+const { createNote, deleteNote, getNote, updateNote, findAllNotes } = require("../controllers/Notes");
 
 module.exports = [
     {
@@ -20,5 +20,10 @@ module.exports = [
         method: 'PUT',
         path: '/api/note/{id}',
         handler: updateNote
+    },
+    {
+        method: 'GET',
+        path: '/api/note/all',
+        handler: findAllNotes
     },
 ]

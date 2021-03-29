@@ -106,3 +106,20 @@ exports.updateNote = async (request, h) => {
         }
     }
 }
+
+exports.findAllNotes = async (request, h) => {
+    try {
+        let notes = await Notes.findAll();
+        return {
+            status: true,
+            notes
+        }
+    } catch (error) {
+        return {
+            status: false,
+            message: 'Error fetching notes',
+            error
+        }
+    }
+
+}

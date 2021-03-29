@@ -1,4 +1,5 @@
 const Notebooks = require("../models/Notebooks");
+const Notes = require("../models/Notes");
 const Users = require("../models/Users");
 const { createNotebook } = require("./Notebooks");
 exports.createUser = async (request, h) => {
@@ -112,6 +113,24 @@ exports.updateUser = async (request, h) => {
         return {
             status: false,
             message: 'Error updating user',
+            error
+        }
+    }
+
+}
+
+
+exports.findAllUsers = async (request, h) => {
+    try {
+        let users = await Users.findAll({ include: [Notebooks, Notes], attributes: { exclude: ['password'] } });
+        return {
+            status: true,
+            users
+        }
+    } catch (error) {
+        return {
+            status: false,
+            message: 'Error fetching users',
             error
         }
     }

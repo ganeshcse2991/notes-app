@@ -114,3 +114,22 @@ exports.updateNotebook = async (request, h) => {
         }
     }
 }
+
+
+
+exports.findAllNotebook = async (request, h) => {
+    try {
+        let notebooks = await Notebooks.findAll();
+        return {
+            status: true,
+            notebooks
+        }
+    } catch (error) {
+        return {
+            status: false,
+            message: 'Error fetching notebooks',
+            error
+        }
+    }
+
+}

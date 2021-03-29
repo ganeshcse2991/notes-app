@@ -1,4 +1,4 @@
-const { createNotebook, getNotebook, deleteNotebook, updateNotebook } = require("../controllers/Notebooks");
+const { createNotebook, getNotebook, deleteNotebook, updateNotebook, findAllNotebook } = require("../controllers/Notebooks");
 
 module.exports = [{
     method: 'POST',
@@ -19,5 +19,10 @@ module.exports = [{
     method: 'PUT',
     path: '/api/notebook/{id}',
     handler: updateNotebook
+},
+{
+    method: 'GET',
+    path: '/api/notebook/all',
+    handler: findAllNotebook
 }
 ]
