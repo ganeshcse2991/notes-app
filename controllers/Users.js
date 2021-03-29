@@ -19,6 +19,7 @@ exports.createUser = async (request, h) => {
                 request.payload.name = 'First Notebook'
                 request.payload.userId = user.id
                 let notebook = await createNotebook(request, h)
+                delete user.password
                 return { status: true, user, notebook, message: 'User created' }
             } else {
                 return { status: false, message: 'Invalid fields' }
@@ -99,9 +100,10 @@ exports.updateUser = async (request, h) => {
             user.name = name || user.name;
             user.password = password || user.password;
             await user.save()
+            delete user.password
             return {
                 status: true,
-                message: 'User update',
+                message: 'User updated',
                 user
             };
         } else {
